@@ -1,0 +1,761 @@
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+  font-family: 'Sora', sans-serif;
+}
+
+:root{
+  --color-blue: #003cff;
+  --color-blue-smoker: #001d7d;
+  --color-gray: #F2F4F8;
+  --color-white: #fff;
+  --color-black-smoker: #21272A;
+  --color-black: #000;
+  --color-smoker: #697077;
+  --border-color: #DDE1E6;
+  --effect-ease: 0.3s all;
+}
+
+body{
+  position: relative;
+  width: 100vw;
+  height: auto;
+  overflow-x: hidden;
+  transition: var(--effect-ease);
+}
+
+/* FUTURAMENTE VERIFICAR SE FICA VIÁVEL ADD O MODO ESCURO */
+/*
+.dark-mode{
+  background-color: var(--color-black-smoker) !important;
+  color: var(--color-white) !important;
+  transition: var(--effect-ease) !important;
+}
+*/
+
+/* =============================== CSS DO MENU DE NAVEGAÇÃO ================================== */
+
+header{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1vmax 3vmax;
+  background-color: var(--color-white);
+  z-index: 99;
+}
+
+header .logo, nav{
+  position: relative;
+  width: auto;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+header .logo img{
+  width: 3.5vmax;
+  height: auto;
+  padding-right: 0.5vmax;
+}
+
+header .logo div span{
+  display: block;
+  font-size: 1.3vmax;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: var(--color-black-smoker);
+}
+
+nav li{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 9.5vmax;
+  height: 3vmax;
+  list-style: none;
+  margin: 0 0.5vmax;
+  cursor: pointer;
+  transition: var(--effect-ease);
+  border-radius: 10px;
+}
+
+nav li a{
+  text-decoration: none;
+  color: var(--color-black-smoker);
+  font-size: 1.1vmax;
+}
+
+nav li:hover{
+  background-color: var(--color-blue-smoker);
+  transition: var(--effect-ease);
+}
+
+nav li:hover a {
+  color: var(--color-white);
+  transition: var(--effect-ease);
+}
+
+header .collapse{
+  position: relative;
+  width: auto;
+  height: auto;
+  padding: 1vmax 1vmax;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  cursor: pointer;
+  z-index: 9999;
+}
+
+header .collapse span{
+  position: relative;
+  display: inline;
+  width: 5vmax;
+  height: 0.3vmax;
+  margin: 0.3vmax 0;
+  border-radius: 10px;
+  background-color: var(--color-black-smoker);
+  transition: var(--effect-ease);
+  transform-origin: center;
+}
+
+.collapse-true{
+  transform: translateX(0) !important;
+  transition: var(--effect-ease);
+}
+
+header .collapse.open span:nth-child(1) {
+  transform: rotate(45deg) translate(0.5vmax, 0.5vmax);
+  transition: var(--effect-ease);
+  background-color: var(--color-white);
+}
+
+header .collapse.open span:nth-child(2) {
+  display: none;
+}
+
+header .collapse.open span:nth-child(3) {
+  transform: rotate(-45deg) translate(0.5vmax, -0.5vmax);
+  transition: var(--effect-ease);
+  background-color: var(--color-white);
+}
+
+/* =============================== CSS DO BOTÃO DARCK MODE ================================== */
+/*
+#darkModeToggle{
+  position: relative;
+  width: 3vmax;
+  height: 3vmax;
+  border: none;
+  background-color: transparent;
+  font-size: 1.7vmax;
+  cursor: pointer;
+}*/
+
+/* =============================== CSS DO BANNER ================================== */
+
+.edu-hero{
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--color-gray);
+  padding: 0 5vmax;
+}
+
+.edu-hero .edu-text, .edu-image{
+  position: relative;
+  width: 50vw;
+  height: auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+}
+.edu-hero .edu-text h1{
+  width: inherit;
+  font-size: 3.5vmax;
+  text-transform: uppercase;
+  color: var(--color-black-smoker);
+}
+
+.edu-hero .edu-text h2{
+  width: inherit;
+  font-size: 3vmax;
+  text-transform: capitalize;
+  color: var(--color-black-smoker);
+  margin: 0 0 3vmax 0;
+}
+
+.edu-hero .edu-text p{
+  width: inherit;
+  font-size: 1.1vmax;
+  text-transform: capitalize;
+  color: var(--color-black-smoker);
+}
+
+.edu-hero .edu-image img{
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 20px;
+  padding-right: 5vmax;
+}
+
+.edu-hero .btn-dash{
+  position: relative;
+  width: inherit;
+  height: auto;
+  margin: 3vmax 0 0 0;
+}
+
+.edu-hero .btn-dash button{
+  width: auto;
+  height: auto;
+  padding: 0.8vmax 2vmax;
+  font-size: 1vmax;
+  color: var(--color-white);
+  background-color: var(--color-blue-smoker);
+  border: none;
+  cursor: pointer;
+}
+
+/* =============================== CSS SOBRE ================================== */
+
+.section-edu{
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 0 5vmax;
+}
+
+.section-edu h1{
+  font-size: 2vmax;
+  color: var(--color-black-smoker);
+  
+}
+
+.section-edu .sobre-desc{
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.section-edu .sobre-desc div{
+  width: 40vw;
+  height: 20vw;
+  padding: 0 2vmax;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.section-edu .sobre-desc div h2{
+  font-size: 1.6vmax;
+  font-weight: 500;
+  color: var(--color-black-smoker);
+}
+
+.section-edu .sobre-desc div img{
+  margin: 1.5vmax 0
+}
+
+.section-edu .sobre-desc div p{
+  font-size: 1vmax;
+  color: var(--color-black-smoker);
+  text-align: center;
+}
+
+/* =============================== CSS INDICADORES ================================== */
+
+.section-ind{
+  position: relative;
+  width: 100vw;
+  height: auto;
+  padding: 5vmax 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: var(--color-gray);
+}
+
+.section-ind h1{
+  font-size: 2vmax;
+  color: var(--color-black-smoker);
+  margin: 2vmax 0;
+}
+
+.section-ind .edu-flex{
+  position: relative;
+  width: 85vw;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.section-ind .edu-flex .edu-item{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 25vw;
+  height: 15vw;
+  margin: 1vmax;
+  background-color: var(--color-white);
+}
+
+.section-ind .edu-flex .edu-item h1{
+  font-size: 1.4vmax;
+  margin: 1.5vmax 0;
+  color: var(--color-black-smoker);
+}
+
+/* =============================== CSS PUBLICO ALVO ================================== */
+
+.section-card{
+  position: relative;
+  width: 100vw;
+  height: 120vh;
+  padding: 0 5vmax;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.section-card h1{
+  font-size: 2vmax;
+  color: var(--color-black-smoker);
+  margin: 5vmax 0 0 0;
+}
+
+.section-card .card-grid{
+  width: auto;
+  height: auto;
+  margin: 6vmax 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.section-card .card-grid .card-item{
+  width: 20vw;
+  height: 20vw;
+  margin: 1vmax;
+  border: 0.1vw solid var(--border-color);
+}
+
+.section-card .card-grid .card-item .box-img{
+  margin: 0 0 1.5vmax 0;
+  overflow: hidden;
+}
+
+.section-card .card-grid .card-item .box-img img{
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  transition: var(--effect-ease);
+}
+
+.section-card .card-grid .card-item .box-img:hover img{
+  transform: scale(1.2);
+  transition: var(--effect-ease);
+}
+
+.section-card .card-grid .card-item .box-text{
+  width: inherit;
+  height: auto;
+}
+
+.section-card .card-grid .card-item .box-text p{
+  text-align: center;
+  font-size: 1.1vmax;
+}
+
+/* =============================== CSS DASHBOARD ================================== */
+
+.section-dash{
+  position: relative;
+  background: url('../assets/img/background.png');
+  background-attachment: fixed;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.section-dash h1{
+  font-size: 2vmax;
+  color: var(--color-black-smoker);
+}
+
+.section-dash p{
+  width: 30%;
+  margin: 2vmax 0;
+  text-align: center;
+  font-size: 1.1vmax;
+  color: var(--color-black-smoker);
+}
+
+.btn-grad {
+  background-image: linear-gradient(to right, #92ede8 0%, #0ED2F7  51%, #B2FEFA  100%);
+  width: auto;
+  height: auto;
+  padding: 1vmax 1.4vmax;
+  text-align: center;
+  text-transform: uppercase;
+  transition: var(--effect-ease);
+  background-size: 200% auto;
+  color: var(--color-black-smoker);            
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-grad:hover {
+  background-position: right center; 
+  color: var(--color-blue-smoker);
+  text-decoration: none;
+}
+
+/* =============================== CSS RODAPÉ ================================== */
+
+.footer{
+  position: relative;
+  width: 100vw;
+  height: 60vh;
+  background-color: var(--color-black-smoker);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 5vmax;
+}
+
+.footer .box-logo{
+  position: relative;
+  width: auto;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10vmax;
+  align-items: center;
+  cursor: pointer;
+
+  background-color: #001d7d00;
+}
+
+.footer .box-logo img{
+  width: 8vmax;
+  height: auto;
+  padding-right: 0.5vmax;
+}
+
+.footer .box-logo div span{
+  display: block;
+  font-size: 2.5vmax;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: var(--color-white);
+}
+
+.footer .box-infor{
+  position: relative;
+  width: 45vw;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4vmax;
+
+  background-color: #0ed0f700;
+}
+
+.footer .box-infor ul{
+  display: flex;
+  flex-direction: column;
+}
+
+.footer .box-infor ul li,a{
+  list-style: none;
+  text-decoration: none;
+  color: var(--color-white);
+  font-size: 1vmax;
+}
+
+.footer .box-infor ul li{
+  margin: 0 0 1vmax 0;
+}
+
+.footer .box-infor ul li .active{
+  font-size: 1.5vmax;
+  font-weight: bold;
+}
+
+.footer .box-social{
+  position: relative;
+  width: auto;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10vmax;
+
+  background-color: #0ef71200;
+}
+
+.footer .box-social div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.2vmax;
+  border-radius: 50%;
+  margin: 0.5vmax;
+  cursor: pointer;
+  background-color: var(--color-white);
+}
+
+.footer .box-social div i{
+  font-size: 1.5vmax;
+  color: var(--color-blue-smoker);
+}
+
+.footer .copy{
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: auto;
+  padding: 1vmax 0;
+  text-align: center;
+  background-color: var(--color-black-smoker);
+  border-top: 0.1vw solid var(--color-white);
+}
+
+.footer .copy span{
+  font-size: 1vmax;
+  color: var(--color-white);
+}
+
+/* =============================== ESTILIZAÇÕES PARA RESPONSIVIDADE 1200 ================================== */
+
+@media (max-width: 1300px){
+  .section-ind{
+    height: 100vh;
+  }
+
+  .section-card .card-grid{
+    justify-content: space-around;
+  }
+
+  .section-card .card-grid .card-item{
+    width: 300px;
+    height: 300px;
+    margin: 20px;
+  }
+}
+
+/* =============================== ESTILIZAÇÕES PARA RESPONSIVIDADE 998 ================================== */
+
+@media (max-width: 998px) {
+
+  header .collapse{
+    display: flex;
+  }
+
+  header .logo img{
+    width: 50px;
+  }
+  
+  header .logo div span{
+    font-size: 18px;
+  }
+  
+  nav{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: space-evenly;
+    background-color: var(--color-blue-smoker);
+    transform: translateX(100vw);
+    transition: var(--effect-ease);
+    z-index: 999;
+  }
+  
+  nav li{
+    width: inherit;
+    pointer-events: none;
+  }
+
+  nav li a{
+    font-size: 20px;
+    color: var(--color-white);
+    pointer-events: all;
+  }
+
+  .section-edu .sobre-desc div p{
+    font-size: 12px;
+  }
+
+  .section-card .card-grid .card-item .box-text p{
+    font-size: 15px;
+  }
+
+  .section-dash h1{
+    font-size: 22px;
+  }
+
+  .section-dash p{
+    width: 50%;
+    font-size: 15px;
+  }
+
+  .footer{
+    flex-direction: column;
+    height: auto;
+  }
+
+  .footer .box-logo{
+    width: 100%;
+    justify-content: start;
+    padding: 50px 0;
+    border-bottom: 1px solid var(--color-white);
+  }
+  .footer .box-infor{
+    flex-direction: column;
+    margin: 0;
+    width: 100%;
+  }
+}
+
+/* =============================== ESTILIZAÇÕES PARA RESPONSIVIDADE 768 ================================== */
+
+@media (max-width: 768px) {
+  .edu-hero{
+    width: 100vw;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+
+  .edu-hero .edu-text{
+    width: inherit;
+    text-align: center;
+    margin: 70px 0 0 0;
+  }
+
+  .edu-hero .edu-text h1{
+    font-size: 25px;
+  }
+
+  .edu-hero .edu-text h2{
+    font-size: 20px;
+  }
+
+  .edu-hero .edu-text p{
+    width: 70vw;
+    font-size: 15px;
+  }
+
+  .edu-hero .edu-image img{
+    padding: 0;
+    width: 300px;
+  }
+
+  .edu-hero .btn-dash button{
+    font-size: 13px;
+  }
+
+  .section-edu h1{
+    font-size: 22px;
+    margin: 70px 0 30px 0;
+  }
+
+  .section-edu .sobre-desc{
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .section-edu .sobre-desc div{
+    width: 100%;
+    height: auto;
+    margin: 30px 0;
+    padding: 0 2vmax;
+  }
+
+  .section-edu .sobre-desc div h2{
+    font-size: 20px;
+  }
+
+  .section-edu .sobre-desc div img{
+    margin: 20px 0
+  }
+
+  .section-edu .sobre-desc div p{
+    font-size: 15px;
+    text-align: center;
+  }
+
+  .section-ind{
+    height: auto;
+  }
+  .section-ind .edu-flex .edu-item{
+    width: 200px;
+    height: 150px;
+    margin: 25px;
+  }
+
+  .section-ind .edu-flex .edu-item h1{
+    font-size: 15px;
+  }
+
+  .section-card{
+    height: auto;
+  }
+}
+
+/* =============================== ESTILIZAÇÕES PARA RESPONSIVIDADE 458 ================================== */
+
+@media (max-width: 458px) {
+  .edu-hero .edu-text p{
+    width: 100%;
+  }
+  .section-ind .edu-flex .edu-item{
+    width: 500px;
+    height: 200px;
+  }
+  .section-card .card-grid .card-item .box-text p{
+    font-size: 15px;
+  }
+}
+
+
+
