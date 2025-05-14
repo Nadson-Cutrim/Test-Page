@@ -1,0 +1,593 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+  font-family: 'Sora', sans-serif;
+}
+
+:root {
+  --color-blue: #003cff;
+  --color-blue-smoker: #001d7d;
+  --color-gray: #F2F4F8;
+  --color-white: #fff;
+  --color-black-smoker: #21272A;
+  --color-black: #000;
+  --color-smoker: #697077;
+  --border-color: #DDE1E6;
+  --effect-ease: 0.3s all;
+}
+
+body {
+  position: relative;
+  width: 100vw;
+  height: auto;
+  overflow-x: hidden;
+  transition: var(--effect-ease);
+}
+
+/* =============================== CSS DO MENU DE NAVEGAÇÃO ================================== */
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1vmax 3vmax;
+  background-color: var(--color-gray);
+  z-index: 99;
+
+}
+
+header .logo,
+nav {
+  position: relative;
+  width: auto;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+
+}
+
+header .logo img {
+  width: 3.5vmax;
+  height: auto;
+  padding-right: 0.5vmax;
+}
+
+header .logo div span {
+  display: block;
+  font-size: 1.3vmax;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: var(--color-black-smoker);
+}
+
+nav li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 9.5vmax;
+  height: 3vmax;
+  list-style: none;
+  margin: 0 0.5vmax;
+  cursor: pointer;
+  transition: var(--effect-ease);
+  border-radius: 10px;
+}
+
+nav li a {
+  text-decoration: none;
+  color: var(--color-black-smoker);
+  font-size: 1.1vmax;
+}
+
+nav li:hover {
+  background-color: var(--color-blue-smoker);
+  transition: var(--effect-ease);
+}
+
+nav li:hover a {
+  color: var(--color-white);
+  transition: var(--effect-ease);
+}
+
+header .collapse {
+  position: relative;
+  width: auto;
+  height: auto;
+  padding: 1vmax 1vmax;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  cursor: pointer;
+  z-index: 9999;
+}
+
+header .collapse span {
+  position: relative;
+  display: inline;
+  width: 5vmax;
+  height: 0.3vmax;
+  margin: 0.3vmax 0;
+  border-radius: 10px;
+  background-color: var(--color-black-smoker);
+  transition: var(--effect-ease);
+  transform-origin: center;
+}
+
+.collapse-true {
+  transform: translateX(0) !important;
+  transition: var(--effect-ease);
+}
+
+header .collapse.open span:nth-child(1) {
+  transform: rotate(45deg) translate(0.5vmax, 0.5vmax);
+  transition: var(--effect-ease);
+  background-color: var(--color-white);
+}
+
+header .collapse.open span:nth-child(2) {
+  display: none;
+}
+
+header .collapse.open span:nth-child(3) {
+  transform: rotate(-45deg) translate(0.5vmax, -0.5vmax);
+  transition: var(--effect-ease);
+  background-color: var(--color-white);
+}
+
+
+
+/* =============================== CSS GRÁFICOS ================================== */
+.graf-edu {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20vmax, 1fr));
+  gap: 2vmax;
+  padding: 2vmax;
+  margin-top: 5vmax;
+}
+
+.card-edu {
+  background-color: var(--color-gray);
+  padding: 1.5vmax;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-edu h2 {
+  margin-bottom: 1vmax;
+  font-size: 1.2em;
+  color: var(--color-black-smoker);
+}
+
+
+/* =============================== CSS RODAPÉ ================================== */
+
+.footer {
+  position: relative;
+  width: 100vw;
+  height: 70vh;
+  background-color: var(--color-black-smoker);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 5vmax;
+}
+
+.footer .box-logo {
+  position: relative;
+  width: auto;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2vmax;
+  align-items: center;
+  cursor: pointer;
+
+  background-color: #001d7d00;
+}
+
+.footer .box-logo img {
+  width: 8vmax;
+  height: auto;
+  padding-right: 0.5vmax;
+}
+
+.footer .box-logo div span {
+  display: block;
+  font-size: 2.5vmax;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: var(--color-white);
+}
+
+.footer .box-infor {
+  position: relative;
+  width: 45vw;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1vmax;
+
+  background-color: #0ed0f700;
+}
+
+.footer .box-infor ul {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer .box-infor ul li,
+a {
+  list-style: none;
+  text-decoration: none;
+  color: var(--color-white);
+  font-size: 1vmax;
+}
+
+.footer .box-infor ul li {
+  margin: 0 0 1vmax 0;
+}
+
+.footer .box-infor ul li .active {
+  font-size: 1.5vmax;
+  font-weight: bold;
+}
+
+.footer .box-social {
+  position: relative;
+  width: auto;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5vmax;
+
+  background-color: #0ef71200;
+}
+
+.footer .box-social div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.2vmax;
+  border-radius: 50%;
+  margin: 0.5vmax;
+  cursor: pointer;
+  background-color: var(--color-white);
+}
+
+.footer .box-social div i {
+  font-size: 1.5vmax;
+  color: var(--color-blue-smoker);
+}
+
+.footer .copy {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: auto;
+  padding: 1vmax 0;
+  text-align: center;
+  background-color: var(--color-black-smoker);
+  border-top: 0.1vw solid var(--color-white);
+}
+
+#active {
+  font-size: 3rem;
+  font-weight: bold;
+
+}
+
+.footer .copy span {
+  font-size: 1vmax;
+  color: var(--color-white);
+}
+
+
+
+/* =============================== CSS RESPONSIVO ================================== */
+
+@media (max-width: 1300px) {
+
+  .graf-edu {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    /* Duas colunas */
+    gap: 2vmax;
+    padding: 2vmax;
+    max-width: 1300px;
+    margin: 0 auto;
+    /* Centraliza na página */
+  }
+
+
+  .card-edu {
+    background-color: var(--color-gray);
+    padding: 1.5vmax;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    /* Ocupa a célula toda */
+    box-sizing: border-box;
+    margin-top: 6vmax;
+  }
+
+  .card-edu h2 {
+    margin-bottom: 1vmax;
+    font-size: 1.2em;
+    color: var(--color-black-smoker);
+  }
+
+  #active {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+}
+
+@media (max-width: 998px) {
+
+  header .collapse {
+    display: flex;
+  }
+
+  header .logo img {
+    width: 50px;
+  }
+
+  header .logo div span {
+    font-size: 18px;
+  }
+
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: space-evenly;
+    background-color: var(--color-blue-smoker);
+    transform: translateX(100vw);
+    transition: var(--effect-ease);
+    z-index: 999;
+  }
+
+  nav li {
+    width: inherit;
+    pointer-events: none;
+  }
+
+  nav li a {
+    font-size: 20px;
+    color: var(--color-white);
+    pointer-events: all;
+  }
+
+  .graf-edu {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    /* Duas colunas */
+    gap: 2vmax;
+    padding: 2vmax;
+    max-width: 998px;
+    margin: 0 auto;
+    /* Centraliza na página */
+  }
+
+
+  .card-edu {
+    background-color: var(--color-gray);
+    padding: 1.5vmax;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    /* Ocupa a célula toda */
+    box-sizing: border-box;
+  }
+
+  .card-edu h2 {
+    margin-bottom: 1vmax;
+    font-size: 1.2em;
+    color: var(--color-black-smoker);
+  }
+
+  /*=========================resposividade do footer===================*/
+  footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .box-logo {
+    flex-direction: column;
+    text-align: center;
+    margin-top: 2vmax;
+  }
+
+  .box-infor {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+
+  }
+
+  .box-infor ul {
+    margin: 10px 0;
+  }
+
+  .box-infor ul li,
+  a {
+    margin: 2px 0;
+    font-size: 1rem;
+  }
+
+  #active {
+    font-size: 1.2rem;
+    font-weight: bold;
+
+  }
+
+  .box-social {
+    justify-content: center;
+  }
+
+  #rdp-copy {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .graf-edu {
+    grid-template-columns: 1fr;
+    display: grid;
+    gap: 1vmax;
+    padding: 2vmax;
+    max-width: 600px;
+    margin-top: 6vmax;
+  }
+
+  .card-edu {
+    width: 70%;
+    margin: 0 auto;
+  }
+
+}
+
+@media (max-width: 468px) {
+
+  header .collapse {
+    display: flex;
+  }
+
+  header .logo img {
+    width: 35px;
+  }
+
+  header .logo div span {
+    font-size: 1rem ;
+  }
+
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: var(--color-blue-smoker);
+    transform: translateX(100vw);
+    transition: var(--effect-ease);
+    z-index: 999;
+  }
+
+  nav li {
+    width: 100%;
+    pointer-events: none;
+    text-align: center;
+  }
+
+  nav li a {
+    font-size: 16px;
+    color: var(--color-white);
+    pointer-events: all;
+  }
+
+  
+  .graf-edu {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5vmax;
+    padding: 1.5vmax;
+    width: 100%;
+    max-width: 95vw;
+   
+  }
+
+  .card-edu {
+    background-color: var(--color-gray);
+    padding: 1.5vmax;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .card-edu h2 {
+    margin-bottom: 1vmax;
+    font-size: 1em;
+    color: var(--color-black-smoker);
+    text-align: center;
+  }
+
+  /*=========================resposividade do footer===================*/
+  footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2vmax 1vmax;
+  }
+
+  .box-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 2vmax;
+  }
+
+  .box-infor {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1vmax;
+    margin-bottom: 2vmax;
+  }
+
+  .box-infor ul {
+    margin: 0;
+    padding: 0;
+  }
+
+  .box-infor ul li,
+  .box-infor ul li a {
+    font-size: 0.9rem;
+    margin: 2px 0;
+    list-style: none;
+    text-decoration: none;
+    color: var(--color-white);
+  }
+
+  #active {
+    font-size: 1rem;
+    font-weight: bold;
+  }
+
+  .box-social {
+    display: flex;
+    justify-content: center;
+    gap: 1vmax;
+    margin-bottom: 2vmax;
+  }
+
+  #rdp-copy {
+    font-size: 0.85rem;
+    text-align: center;
+    color: var(--color-white);
+  }
+}

@@ -2,12 +2,14 @@ import axios from 'axios';
 import https from 'https';
 
 const url =
-    'https://api.qedu.org.br/v1/censo/territorio?ibge_id=21&ano=2019&dependencia_id=2&ciclo_id=EM';
+    'https://api.qedu.org.br/v1/censo/territorio?ibge_id=21&ano=2023&dependencia_id=2&ciclo_id=EM';
 
+
+const token = 'VWFtMhR85XttcftnC0hmdPbvgf8dTPkQwDF86XpI'
 const options = {
     headers: {
         Accept: 'application/json',
-        Authorization: 'Bearer VWFtMhR85XttcftnC0hmdPbvgf8dTPkQwDF86XpI', // não apagar
+        Authorization:  `Bearer ${token}` // não apagar
     },
     httpsAgent: new https.Agent({
         rejectUnauthorized: false, // apenas para testes locais
