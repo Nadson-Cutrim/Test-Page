@@ -1,31 +1,27 @@
-/*
-const btn_darck_mode = document.getElementById('darkModeToggle')
-
-btn_darck_mode.addEventListener('click', () => {
-  document.body.classList.toggle('dark-mode')
-  btn_darck_mode.textContent = document.body.classList.contains('dark-mode') ? "☀️" : "🌙"
-}) */
-
-
+// Função para verificar se o elemento está visível na tela
 const collapse = document.getElementById('collapse')
 const nav = document.getElementById('nav')
 const ancora = document.querySelectorAll('nav a')
 
-
-collapse.addEventListener('click', () => {
-  nav.classList.toggle('collapse-true')
-  collapse.classList.toggle('open')
-})
-
-ancora.forEach((link) => {
-  link.addEventListener('click', () => {
-    nav.classList.remove('collapse-true')
-    collapse.classList.remove('open')
+// Verifica se collapse e nav existem antes de adicionar eventos
+if (collapse && nav) {
+  collapse.addEventListener('click', () => {
+    nav.classList.toggle('collapse-true')
+    collapse.classList.toggle('open')
   })
-})
+}
 
+// Verifica se existem links dentro do nav
+if (ancora.length > 0 && nav && collapse) {
+  ancora.forEach((link) => {
+    link.addEventListener('click', () => {
+      nav.classList.remove('collapse-true')
+      collapse.classList.remove('open')
+    })
+  })
+}
 
-
+/*
 new Chart(document.getElementById('evasaoChart'), {
   type: 'line',
   data: {
@@ -37,7 +33,7 @@ new Chart(document.getElementById('evasaoChart'), {
       fill: false
     }]
   }
-});
+})
 
 new Chart(document.getElementById('idebChart'), {
   type: 'bar',
@@ -49,7 +45,7 @@ new Chart(document.getElementById('idebChart'), {
       backgroundColor: '#82ca9d'
     }]
   }
-});
+})
 
 new Chart(document.getElementById('internetChart'), {
   type: 'bar',
@@ -61,7 +57,7 @@ new Chart(document.getElementById('internetChart'), {
       backgroundColor: '#8884d8'
     }]
   }
-});
+})
 
 new Chart(document.getElementById('infraChart'), {
   type: 'bar',
@@ -73,5 +69,6 @@ new Chart(document.getElementById('infraChart'), {
       backgroundColor: '#ffc658'
     }]
   }
-});
+})*/
+
 
