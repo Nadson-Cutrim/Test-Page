@@ -52,8 +52,6 @@ nav {
   justify-content: center;
   align-items: center;
   cursor: pointer;
-
-
 }
 
 header .logo img {
@@ -145,34 +143,95 @@ header .collapse.open span:nth-child(3) {
   background-color: var(--color-white);
 }
 
-canvas {
-  width: 20vw;
-  height: auto;
-}
-
 /* =============================== CSS GRÁFICOS ================================== */
+
 .graf-edu {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(20vmax, 1fr));
-  gap: 2vmax;
-  padding: 2vmax;
-  margin-top: 5vmax;
+  position: relative;
+  width: 100vw;
+  height: auto;
+  display: flex;
+  padding: 15vmax 3vmax;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .card-edu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  width: 35vw;
+  height: auto;
   background-color: var(--color-gray);
-  padding: 1.5vmax;
+  margin: 2vmax;
+  padding: 1.2vmax 0;
   border-radius: 10px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-
 }
 
 .card-edu h2 {
-  margin-bottom: 1vmax;
   font-size: 1.2em;
   color: var(--color-black-smoker);
 }
 
+.graf-edu .card-edu .msg-loading{
+  font-size: 1.3vmax;
+  font-weight: bold;
+  color: var(--color-blue-smoker);
+  transform: translateY(5vmax);
+}
+
+/* =============================== CSS DASHBOARD ================================== */
+
+.section-land{
+  position: relative;
+  background: url('../assets/img/background.png');
+  background-attachment: fixed;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.section-land h1{
+  font-size: 2vmax;
+  color: var(--color-black-smoker);
+}
+
+.section-land p{
+  width: 30%;
+  margin: 2vmax 0;
+  text-align: center;
+  font-size: 1.1vmax;
+  color: var(--color-black-smoker);
+}
+
+.btn-grad {
+  background-image: linear-gradient(to right, #92ede8 0%, #0ED2F7  51%, #B2FEFA  100%);
+  width: auto;
+  height: auto;
+  padding: 1vmax 1.4vmax;
+  text-align: center;
+  text-transform: uppercase;
+  transition: var(--effect-ease);
+  background-size: 200% auto;
+  color: var(--color-black-smoker);            
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-grad:hover {
+  background-position: right center; 
+  color: var(--color-blue-smoker);
+  text-decoration: none;
+}
 
 /* =============================== CSS RODAPÉ ================================== */
 
@@ -196,8 +255,6 @@ canvas {
   margin-bottom: 2vmax;
   align-items: center;
   cursor: pointer;
-
-  background-color: #001d7d00;
 }
 
 .footer .box-logo img {
@@ -222,8 +279,6 @@ canvas {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 1vmax;
-
-  background-color: #0ed0f700;
 }
 
 .footer .box-infor ul {
@@ -256,8 +311,6 @@ a {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 5vmax;
-
-  background-color: #0ef71200;
 }
 
 .footer .box-social div {
@@ -289,7 +342,7 @@ a {
 }
 
 #active {
-  font-size: 3rem;
+  font-size: 2rem;
   font-weight: bold;
 
 }
@@ -299,37 +352,11 @@ a {
   color: var(--color-white);
 }
 
-
-
 /* =============================== CSS RESPONSIVO ================================== */
 
 @media (max-width: 1300px) {
 
-  .graf-edu {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    /* Duas colunas */
-    gap: 2vmax;
-    padding: 2vmax;
-    max-width: 1300px;
-    margin: 0 auto;
-    /* Centraliza na página */
-  }
-
-
-  .card-edu {
-    background-color: var(--color-gray);
-    padding: 1.5vmax;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    /* Ocupa a célula toda */
-    box-sizing: border-box;
-    margin-top: 6vmax;
-  }
-
   .card-edu h2 {
-    margin-bottom: 1vmax;
     font-size: 1.2em;
     color: var(--color-black-smoker);
   }
@@ -379,73 +406,83 @@ a {
     pointer-events: all;
   }
 
-  .graf-edu {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    /* Duas colunas */
-    gap: 2vmax;
-    padding: 2vmax;
-    max-width: 998px;
-    margin: 0 auto;
-    /* Centraliza na página */
-  }
-
-
   .card-edu {
-    background-color: var(--color-gray);
-    padding: 1.5vmax;
-    border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    /* Ocupa a célula toda */
-    box-sizing: border-box;
+    width: 50vw;
+    margin: 30px;
+    padding: 30px 15px;
+
   }
 
   .card-edu h2 {
-    margin-bottom: 1vmax;
     font-size: 1.2em;
     color: var(--color-black-smoker);
   }
 
-  /*=========================resposividade do footer===================*/
-  footer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  .section-land h1 {
+    font-size: 22px;
   }
+
+  .section-land p {
+    width: 50%;
+    font-size: 15px;
+  }
+
+  /*=========================resposividade do footer===================*/
+
+  .footer {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .footer .box-logo {
+    width: 100%;
+    justify-content: start;
+    padding: 50px 0;
+    border-bottom: 1px solid var(--color-white);
+  }
+
+  .footer .box-infor {
+    flex-direction: column;
+    margin: 0;
+    width: 100%;
+  }
+
+  /*========================= resposividade do footer ===================*/
 
   .box-logo {
     flex-direction: column;
+    align-items: center;
     text-align: center;
-    margin-top: 2vmax;
   }
 
   .box-infor {
     flex-direction: column;
     align-items: center;
     text-align: center;
-
-
   }
 
   .box-infor ul {
-    margin: 10px 0;
+    margin: 15px 0;
   }
 
   .box-infor ul li,
   a {
-    margin: 2px 0;
-    font-size: 1rem;
+    margin: 6px 0;
+    font-size: 19px;
   }
 
   #active {
-    font-size: 1.2rem;
+    font-size: 22px;
     font-weight: bold;
-
   }
 
   .box-social {
     justify-content: center;
+    margin-bottom: 0;
+  }
+
+  .footer .box-social div i {
+    font-size: 20px;
   }
 
   #rdp-copy {
@@ -454,43 +491,33 @@ a {
 }
 
 @media (max-width: 768px) {
-  .graf-edu {
-    grid-template-columns: 1fr;
-    display: grid;
-    gap: 1vmax;
-    padding: 2vmax;
-    max-width: 600px;
-    margin-top: 6vmax;
-  }
 
   .card-edu {
-    width: 70%;
-    margin: 0 auto;
+    width: 80%;
   }
 
 }
 
 @media (max-width: 468px) {
+  .graf-edu .card-edu .msg-loading{
+    font-size: 15px;
+  }
+
+  /*=========================resposividade do footer===================*/
 
   footer {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 2vmax 1vmax;
-    background-color: var(--color-blue-smoker);
-    color: var(--color-white);
   }
 
   .box-logo {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 1.5vmax;
-  }
-
-  .box-logo img {
-    width: 45px;
-    margin-bottom: 0.5vmax;
+    text-align: center;
+    margin-bottom: 2vmax;
   }
 
   .box-infor {
@@ -499,7 +526,7 @@ a {
     align-items: center;
     text-align: center;
     gap: 1vmax;
-    margin-bottom: 1.5vmax;
+    margin-bottom: 2vmax;
   }
 
   .box-infor ul {
@@ -507,19 +534,17 @@ a {
     padding: 0;
   }
 
-  .box-infor ul li {
-    list-style: none;
-    margin: 2px 0;
-  }
-
+  .box-infor ul li,
   .box-infor ul li a {
+    font-size: 0.9rem;
+    margin: 2px 0;
+    list-style: none;
     text-decoration: none;
     color: var(--color-white);
-    font-size: 0.95rem;
   }
 
   #active {
-    font-size: 1.05rem;
+    font-size: 1rem;
     font-weight: bold;
   }
 
@@ -527,20 +552,12 @@ a {
     display: flex;
     justify-content: center;
     gap: 1vmax;
-    margin-top: 1.5vmax;
-  }
-
-  .box-social a img {
-    width: 24px;
-    height: 24px;
+    margin-bottom: 2vmax;
   }
 
   #rdp-copy {
     font-size: 0.85rem;
     text-align: center;
-    margin-top: 1.5vmax;
-    border-top: 1px solid #ccc;
-    padding-top: 1vmax;
+    color: var(--color-white);
   }
-  
 }

@@ -10,15 +10,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Sora:wght@100..800&display=swap"
-      rel="stylesheet"/>
-
+      rel="stylesheet"
+    />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   </head>
 
   <body>
     <header>
-      <div class="logo" onclick="window.location.href='/index.html'">
+      <div class="logo" onclick="window.location.href='../index.html' ">
         <img src="../assets/img/dados.png" alt="logo" id="img-edu-logo" />
         <div>
           <span>Educa</span>
@@ -28,17 +28,19 @@
 
       <nav id="nav">
         <li>
-          <a href="#sobre"><i class="fa-regular fa-address-card"></i> Sobre</a>
+          <a href="../index.html#sobre"
+            ><i class="fa-regular fa-address-card"></i> Sobre</a
+          >
         </li>
 
         <li>
-          <a href="#indicadores"
+          <a href="../index.html#indicadores"
             ><i class="fa-regular fa-hand-point-up"></i> Indicadores</a
           >
         </li>
 
         <li>
-          <a href="#publico-alvo"
+          <a href="../index.html#publico-alvo"
             ><i class="fa-solid fa-people-arrows"></i> Público-Alvo</a
           >
         </li>
@@ -56,41 +58,45 @@
     </header>
 
     <section class="graf-edu">
-       
-  
       <div class="card-edu">
         <h2>Evasão Escolar</h2>
-        <canvas id="evasaoChart"></canvas>
+       <!-- <div id="loading">Carregando dados...</div>
+        <div id="error"></div> MENSAGEM DE CARREGAMENTO -->
+        <canvas id="enem"></canvas>
       </div>
 
       <div class="card-edu">
         <h2>Nota do IDEB</h2>
-        <canvas id="idebChart"></canvas>
+        <div id="loading" class="msg-loading">Carregando dados...</div>
+        <div id="error"></div>
+        <canvas id="idebChart2"></canvas>
       </div>
 
       <div class="card-edu">
-        <h2>Acesso à Internet</h2>
-        <canvas id="internetChart"></canvas>
+        <h2>Notas do Enem</h2>
+        <div id="loading-enem" class="msg-loading">Carregando dados...</div>
+        <div id="error-enem"></div>
+        <canvas id="enemChart"></canvas>
       </div>
 
       <div class="card-edu">
         <h2>Infraestrutura Escolar</h2>
+       <!-- <div id="loading">Carregando dados...</div>
+        <div id="error"></div> MENSAGEM DE CARREGAMENTO -->
         <canvas id="infraChart"></canvas>
       </div>
+    </section>
 
-      <div class="card-edu">
-        <h2>IDEB - MA</h2>
-        <canvas id="idebChart2"></canvas>
-        <div id="loadin">Carregando...</div>
-        <div id="error-1" style="display:none; color:red;"></div>
-      </div>
-
-       <div class="card-edu">
-        <h2>ENEM</h2>
-        <canvas id="enemChart"></canvas>
-        <div id="loading">Carregando...</div>
-        <div id="error-2" style="display:none; color:red;"></div>
-      </div>
+    <section class="section-land" id="landpage">
+      <h1>ACESSE A PLATAFORMA</h1>
+      <p>
+        Explore iniciativas, descubra informações essenciais e junte-se a quem
+        está transformando a educação pública em um bem mais justo e acessível
+        para todos.
+      </p>
+      <button class="btn-grad" onclick="window.location.href='../index.html'">
+        EXPLORAR
+      </button>
     </section>
 
     <footer class="footer" id="dados">
@@ -104,7 +110,7 @@
 
       <div class="box-infor">
         <ul>
-          <li><a id="active" href="">Início</a></li>
+          <li><a id="active" href="#">Início</a></li>
           <br />
           <li><a href="">Sobre</a></li>
           <li><a href="">Indicadores</a></li>
@@ -112,7 +118,7 @@
         </ul>
 
         <ul>
-          <li><a id="active" href="">Informações</a></li>
+          <li><a id="active" href="#">Informações</a></li>
           <br />
           <li><a href="">INEP – Censo Escolar</a></li>
           <li><a href="">IBGE – Indicadores de Educação</a></li>
@@ -120,7 +126,7 @@
         </ul>
 
         <ul>
-          <li><a id="active" href="">Suporte</a></li>
+          <li><a id="active" href="#">Suporte</a></li>
           <br />
           <li>
             <a href=""><i class="fa-solid fa-phone"></i> (98) 94002 - 8922</a>
@@ -151,24 +157,17 @@
       </div>
 
       <div class="copy">
-        <span id="rdp-copy"
-          >&copy; 2025 Copyright - Todos os direitos reservados</span
-        >
+        <span id="rdp-copy">
+          &copy; 2025 Copyright - Todos os direitos reservados
+        </span>
       </div>
     </footer>
-<<<<<<< HEAD
-    <script src="/js/scripts.js"></script>
+    <script src="../js/scripts.js" defer></script>
+    <script src="../js/requisicao.mjs"></script>
+    <script src="../js/grafEdu.js"></script>
     <script
       src="https://kit.fontawesome.com/091f30ca3a.js"
       crossorigin="anonymous"
     ></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-=======
-    <script src="../js/scripts.js"></script>
-    <script src="../js/requisicao.mjs"></script>
-    <script src="https://kit.fontawesome.com/091f30ca3a.js" crossorigin="anonymous"></script>
-   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-   <script>AOS.init();</script>
->>>>>>> 4a6136ebd96d1e94317cdc4fa7c826318af62275
   </body>
 </html>
