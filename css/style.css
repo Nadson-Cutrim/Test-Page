@@ -26,15 +26,6 @@ body{
   transition: var(--effect-ease);
 }
 
-/* FUTURAMENTE VERIFICAR SE FICA VIÁVEL ADD O MODO ESCURO */
-/*
-.dark-mode{
-  background-color: var(--color-black-smoker) !important;
-  color: var(--color-white) !important;
-  transition: var(--effect-ease) !important;
-}
-*/
-
 /* =============================== CSS DO MENU DE NAVEGAÇÃO ================================== */
 
 header{

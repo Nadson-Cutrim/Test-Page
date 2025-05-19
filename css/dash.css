@@ -145,7 +145,10 @@ header .collapse.open span:nth-child(3) {
   background-color: var(--color-white);
 }
 
-
+canvas {
+  width: 20vw;
+  height: auto;
+}
 
 /* =============================== CSS GRÁFICOS ================================== */
 .graf-edu {
@@ -161,6 +164,7 @@ header .collapse.open span:nth-child(3) {
   padding: 1.5vmax;
   border-radius: 10px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
 }
 
 .card-edu h2 {
@@ -468,86 +472,25 @@ a {
 
 @media (max-width: 468px) {
 
-  header .collapse {
-    display: flex;
-  }
-
-  header .logo img {
-    width: 35px;
-  }
-
-  header .logo div span {
-    font-size: 1rem ;
-  }
-
-  nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-    background-color: var(--color-blue-smoker);
-    transform: translateX(100vw);
-    transition: var(--effect-ease);
-    z-index: 999;
-  }
-
-  nav li {
-    width: 100%;
-    pointer-events: none;
-    text-align: center;
-  }
-
-  nav li a {
-    font-size: 16px;
-    color: var(--color-white);
-    pointer-events: all;
-  }
-
-  
-  .graf-edu {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1.5vmax;
-    padding: 1.5vmax;
-    width: 100%;
-    max-width: 95vw;
-   
-  }
-
-  .card-edu {
-    background-color: var(--color-gray);
-    padding: 1.5vmax;
-    border-radius: 10px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-    width: 100%;
-    box-sizing: border-box;
-  }
-
-  .card-edu h2 {
-    margin-bottom: 1vmax;
-    font-size: 1em;
-    color: var(--color-black-smoker);
-    text-align: center;
-  }
-
-  /*=========================resposividade do footer===================*/
   footer {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 2vmax 1vmax;
+    background-color: var(--color-blue-smoker);
+    color: var(--color-white);
   }
 
   .box-logo {
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-align: center;
-    margin-bottom: 2vmax;
+    margin-bottom: 1.5vmax;
+  }
+
+  .box-logo img {
+    width: 45px;
+    margin-bottom: 0.5vmax;
   }
 
   .box-infor {
@@ -556,7 +499,7 @@ a {
     align-items: center;
     text-align: center;
     gap: 1vmax;
-    margin-bottom: 2vmax;
+    margin-bottom: 1.5vmax;
   }
 
   .box-infor ul {
@@ -564,17 +507,19 @@ a {
     padding: 0;
   }
 
-  .box-infor ul li,
-  .box-infor ul li a {
-    font-size: 0.9rem;
-    margin: 2px 0;
+  .box-infor ul li {
     list-style: none;
+    margin: 2px 0;
+  }
+
+  .box-infor ul li a {
     text-decoration: none;
     color: var(--color-white);
+    font-size: 0.95rem;
   }
 
   #active {
-    font-size: 1rem;
+    font-size: 1.05rem;
     font-weight: bold;
   }
 
@@ -582,12 +527,20 @@ a {
     display: flex;
     justify-content: center;
     gap: 1vmax;
-    margin-bottom: 2vmax;
+    margin-top: 1.5vmax;
+  }
+
+  .box-social a img {
+    width: 24px;
+    height: 24px;
   }
 
   #rdp-copy {
     font-size: 0.85rem;
     text-align: center;
-    color: var(--color-white);
+    margin-top: 1.5vmax;
+    border-top: 1px solid #ccc;
+    padding-top: 1vmax;
   }
+  
 }
