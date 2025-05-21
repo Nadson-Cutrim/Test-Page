@@ -143,16 +143,33 @@ header .collapse.open span:nth-child(3) {
   background-color: var(--color-white);
 }
 /* =============================== CSS FILTROS ================================== */
+.filtros select{
+  width: auto;
+  height: auto;
+  padding: 0.5vmax 1.5vmax;
+  font-size: 0.7vmax;
+  border: 1px solid var(--color-smoker);
+  border-radius: 10px;
+  margin: 0.5vmax;
+  border: none;
+  color: var(--color-white);
+  background: #0077ffc7;
+  font-weight: 500;
+  cursor: pointer;
+}
 .filtros {
   position: relative;
   width: 100vw;
   height: auto;
   display: flex;
-  justify-content: space-evenly;
   align-items: center;
-  flex-wrap: wrap;
-  margin-top: 80px;
+  flex-wrap: nowrap;
+  margin: 10vmax 0 0.5vmax 0;
+  padding: 0 7vmax;
+  justify-content: center;
+  overflow: hidden;
 }
+
 /* =============================== CSS GRÁFICOS ================================== */
 
 .graf-edu {
@@ -172,10 +189,10 @@ header .collapse.open span:nth-child(3) {
   align-items: center;
   flex-direction: column;
   width: 35vw;
-  height: auto;
+  height: 22vw;
   background-color: var(--color-gray);
   margin: 2vmax;
-  padding: 1.2vmax 0;
+  padding: 1.5vmax ;
   border-radius: 10px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
@@ -365,7 +382,19 @@ a {
 /* =============================== CSS RESPONSIVO ================================== */
 
 @media (max-width: 1300px) {
+ .filtros {
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0 5vw;
+    gap: 1rem; /* espaço entre elementos */
+  }
 
+  .filtros select {
+    font-size: 16px;
+    padding: 6px 10px;
+    width: 100%;
+    max-width: 300px;
+  }
   .card-edu h2 {
     font-size: 1.2em;
     color: var(--color-black-smoker);
@@ -415,9 +444,13 @@ a {
     color: var(--color-white);
     pointer-events: all;
   }
-
+.filtros select{
+  font-size: 20px;
+  padding: 5px 10px;
+}
   .card-edu {
-    width: 50vw;
+    width: 60vw;
+    height: 32vw;
     margin: 30px;
     padding: 30px 15px;
 
@@ -501,16 +534,66 @@ a {
 }
 
 @media (max-width: 768px) {
-
-  .card-edu {
-    width: 80%;
+  .filtros {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 4vw;
   }
 
+  .filtros select {
+    font-size: 17px;
+    width: auto;
+  }
+    .graf-edu .card-edu {
+    width: 100%;
+    height: 40vh;
+    margin: 30px;
+    margin: 30px 0;
+  }
 }
 
+
 @media (max-width: 468px) {
+ .filtros {
+    flex-direction: column; 
+    padding: 0 5vw;
+    gap: 10px;
+  }
+
+  .filtros select {
+    width: 100%;
+    font-size: 16px;
+    padding: 6px 10px;
+  }
+
   .graf-edu .card-edu .msg-loading{
     font-size: 15px;
+  }
+  .graf-edu{
+    padding: 5vmax 10px;
+    
+  }
+
+  .graf-edu .card-edu {
+    width: 100% !important;
+    height: 300px !important;
+    margin: 30px;
+    padding: 30px 15px;
+    margin: 30px 0;
+  }
+
+  .card-edu h2 {
+    font-size: 1.5em;
+    color: var(--color-black-smoker);
+  }
+
+  .section-land h1 {
+    font-size: 18px;
+  }
+
+  .section-land p {
+    width: 80%;
+    font-size: 13px;
   }
 
   /*=========================resposividade do footer===================*/
