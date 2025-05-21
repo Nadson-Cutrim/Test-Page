@@ -384,21 +384,49 @@ if (ancora.length > 0 && nav && collapse) {
 }
 
 async function renderChart() {
+    const loadingMsg = document.getElementById('loading-enem');
+    const errorMsg = document.getElementById('error-enem');
+    const canvas = document.getElementById('enemChart');
+
+    if(!canvas){
+    console.error('Canvas enemChart não encontrado');
+    return;
+    }
     const ctx = document.getElementById('enemChart').getContext('2d');
-   const cidadeTitulo = cidadeSelect.value !== ''
-    ? cidadeSelect.options[cidadeSelect.selectedIndex].text
-    : `${cidadeSelect.options[cidadeSelect.selectedIndex].text}`; 
 
-    
-    const estado = cidadeSelect.options[cidadeSelect.selectedIndex]?.dataset.estado || `${estadoSelect.options[estadoSelect.selectedIndex].text}`;
-    const anoSelecionado = document.getElementById('ano').value || 2019;
-
-    const dados = await buscarDadosEnem();
 
     if (enemChartInstance) {
-      console.log('Destruindo gráfico existente');
+      console.log('Destruindo gráfico existente...');
       enemChartInstance.destroy();
+      enemChartInstance = null;
     }
+    // Exibe a mensagem de carregamento
+    loadingMsg.style.display = 'block';
+    errorMsg.style.display = 'none';
+
+      const cidadeTitulo = cidadeSelect.options[cidadeSelect.selectedIndex]?.text || 'Cidade não selecionada';
+      const estado = cidadeSelect.options[cidadeSelect.selectedIndex]?.dataset.estado 
+      || estadoSelect.options[estadoSelect.selectedIndex]?.text || 'Estado não selecionado';
+      const anoSelecionado = document.getElementById('ano').value || 2019;
+
+      let dados;
+    // Verifica se o gráfico já existe e o destrói
+    try{
+      dados = await buscarDadosEnem();
+    } catch (error) {
+      console.error('Erro ao Buscar dados do ENEM:' , error)
+      errorMsg.style.display = 'block';
+      loadingMsg.style.display = 'none';
+      return;
+    }
+    if(!dados || !dados.labels || !dados.values) {
+      console.warn('Dados do ENEM indisponíveis ou inválidos.');
+      errorMsg.style.display = 'block';
+      loadingMsg.style.display = 'none';
+      return
+    }
+// Após os dados serem carregados, esconder a mensagem de carregamento
+    loadingMsg.style.display = 'none';
 
     enemChartInstance = new Chart(ctx, {
         type: 'pie',
