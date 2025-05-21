@@ -76,7 +76,7 @@ const token = 'SEU_TOKEN_AQUI'; // Substitua com seu token da API QEdu
 
 ## 📸 Screenshot
 
-![Exemplo do gráfico](./assets/img/dados.png)
+![Exemplo do gráfico](./assets/img/graf.png)
 
 ---
 
