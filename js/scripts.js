@@ -16,7 +16,7 @@ const estadoSelect = document.getElementById('estado');
 const cidadeSelect = document.getElementById('cidade');
 
 // Carrega os estados do Brasil
-fetch('https://servicodados.ibge.gov.br/api/v1/localidades/estados?orderBy=nome')
+fetch('http://servicodados.ibge.gov.br/api/v1/localidades/estados?orderBy=nome')
 .then(res => res.json())
 .then(estados => {
   let maranhaoId = null;
@@ -45,7 +45,7 @@ fetch('https://servicodados.ibge.gov.br/api/v1/localidades/estados?orderBy=nome'
 function carregarCidades(estadoId) {
   cidadeSelect.innerHTML = '<option value="">Carregando...</option>';
 
-  fetch(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${estadoId}/municipios`)
+  fetch(`http://servicodados.ibge.gov.br/api/v1/localidades/estados/${estadoId}/municipios`)
     .then(res => res.json())
     .then(cidades => {
       cidadeSelect.innerHTML = '<option value="">Selecione uma cidade</option>';
@@ -78,7 +78,7 @@ async function dadosIdeb() {
   let codigoIbge = cidadeId != ''? estadoId: estadoId;
 
   for (let ano of categoria) {
-    const url = `https://api.qedu.org.br/v1/ideb?id=${codigoIbge}&ano=${ano}`;
+    const url = `http://api.qedu.org.br/v1/ideb?id=${codigoIbge}&ano=${ano}`;
 
     try {
       const response = await fetch(url, {
@@ -125,7 +125,7 @@ async function dadoAcessoInternet() {
   let codigoIbge = cidadeId !== '' ? cidadeId : estadoId;
 
   const urls = categoria.map(ano =>
-    `https://api.qedu.org.br/v1/censo/territorio?ano=${ano}&ibge_id=${codigoIbge}`
+    `http://api.qedu.org.br/v1/censo/territorio?ano=${ano}&ibge_id=${codigoIbge}`
   );
 
   try {
@@ -212,7 +212,7 @@ async function dadoInfraestrutura() {
   let soma_dependencias_sala_atendimento_especial = 0;
 
   
-    const url = `https://api.qedu.org.br/v1/censo/territorio?ano=${ano}&ibge_id=${codigoIbge}`;
+    const url = `http://api.qedu.org.br/v1/censo/territorio?ano=${ano}&ibge_id=${codigoIbge}`;
 
     try {
       const response = await fetch(url, {
@@ -301,7 +301,7 @@ async function buscarDadosEnem() {
 
     let cidadeId = cidadeSelect.value || 2111300;
     let anoSelecionado = document.getElementById('ano').value || 2019;
-    const apiUrl = 'https://api.qedu.org.br/v1/enem';
+    const apiUrl = 'http://api.qedu.org.br/v1/enem';
    
 
     const params = { id: cidadeId, ano: anoSelecionado };
@@ -530,7 +530,7 @@ async function graficoAcessoInternet(){
     plugins: {
       title: {
         display: true,
-        text: 'Acesso à Internet nas Escolas por Ano |' +(cidadeSelect.value? cidadeSelect.options[cidadeSelect.selectedIndex].text+ "-" + estadoSelect.options[estadoSelect.selectedIndex].text: estadoSelect.options[estadoSelect.selectedIndex].text)
+        text: 'Acesso à Internet nas Escolas por Ano | ' +(cidadeSelect.value? cidadeSelect.options[cidadeSelect.selectedIndex].text+ "-" + estadoSelect.options[estadoSelect.selectedIndex].text: estadoSelect.options[estadoSelect.selectedIndex].text)
       },
       tooltip: {
         mode: 'index',
@@ -542,13 +542,13 @@ async function graficoAcessoInternet(){
     },
     scales: {
       x: {
-        stacked: false,  // DESATIVAR empilhamento no eixo X
+        stacked: false,
         title: {
           display: true
         }
       },
       y: {
-        stacked: false,  // DESATIVAR empilhamento no eixo Y
+        stacked: false,
         beginAtZero: true,
         max: 100,
         title: {
@@ -572,7 +572,7 @@ async function carregarInfraestrutura() {
   
 
   infraChartInstance = new Chart(ctx, {
-    type: 'radar',
+    type: 'line',
     data: {
       labels: dadosInfraestrutura.Labels,
       datasets: [{
@@ -606,7 +606,13 @@ async function carregarInfraestrutura() {
         }
       },
       scales: {
-        r: {
+          x: {
+        stacked: false,  // DESATIVAR empilhamento no eixo X
+        title: {
+          display: true
+        }
+      },
+        y: {
           beginAtZero: true,
         }
       }
