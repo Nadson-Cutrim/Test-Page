@@ -56,20 +56,42 @@
         <span></span>
       </div>
     </header>
+    <section class="filtros">
+      <select id="estado" >
+        <option value="">Selecione um estado</option>
+      </select>
+  
+      <select id="cidade" onchange="carregarGraficos()">
+        <option value="">Selecione uma cidade</option>
+      </select>
+  
+      <select id="ano" onchange="carregarGraficos()">
+        <option value="2019" selected >2019</option>
+        <option value="2018">2018</option>
+        <option value="2017">2017</option>
+        <option value="2016">2016</option>
+        <option value="2015">2015</option>
+        <option value="2014">2014</option>
+        <option value="2013">2013</option>
+        <option value="2012">2012</option>
+        <option value="2011">2011</option>
+        <option value="2010">2010</option>
+      </select>
+    </section>
 
     <section class="graf-edu">
       <div class="card-edu">
-        <h2>Evasão Escolar</h2>
-       <!-- <div id="loading">Carregando dados...</div>
-        <div id="error"></div> MENSAGEM DE CARREGAMENTO -->
-        <canvas id="enem"></canvas>
+        <h2>Internet nas escolas</h2>
+        <div id="loading-internet" class="msg-loading">Carregando dados...</div>
+        <div id="error-internet"></div>
+        <canvas id="internetChart"></canvas>
       </div>
 
       <div class="card-edu">
         <h2>Nota do IDEB</h2>
-        <div id="loading" class="msg-loading">Carregando dados...</div>
-        <div id="error"></div>
-        <canvas id="idebChart2"></canvas>
+        <div id="loading-ideb" class="msg-loading">Carregando dados...</div>
+        <div id="error-ideb"></div>
+        <canvas id="idebChart"></canvas>
       </div>
 
       <div class="card-edu">
@@ -81,8 +103,8 @@
 
       <div class="card-edu">
         <h2>Infraestrutura Escolar</h2>
-       <!-- <div id="loading">Carregando dados...</div>
-        <div id="error"></div> MENSAGEM DE CARREGAMENTO -->
+        <div id="loading-Infraestrutura" class="msg-loading">Carregando dados...</div>
+        <div id="error-Infraestrutura"></div>
         <canvas id="infraChart"></canvas>
       </div>
     </section>
@@ -162,12 +184,10 @@
         </span>
       </div>
     </footer>
-    <script src="../js/scripts.js" defer></script>
-    <script src="../js/requisicao.mjs"></script>
+    <script src="../js/scripts.js"></script>
     <script src="../js/grafEdu.js"></script>
-    <script
-      src="https://kit.fontawesome.com/091f30ca3a.js"
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://kit.fontawesome.com/091f30ca3a.js" crossorigin="anonymous"></script>
+   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+   <script>AOS.init();</script>
   </body>
 </html>
