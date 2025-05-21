@@ -16,7 +16,7 @@ const estadoSelect = document.getElementById('estado');
 const cidadeSelect = document.getElementById('cidade');
 
 // Carrega os estados do Brasil
-fetch('http://servicodados.ibge.gov.br/api/v1/localidades/estados?orderBy=nome')
+fetch('https://servicodados.ibge.gov.br/api/v1/localidades/estados?orderBy=nome')
 .then(res => res.json())
 .then(estados => {
   let maranhaoId = null;
@@ -45,7 +45,7 @@ fetch('http://servicodados.ibge.gov.br/api/v1/localidades/estados?orderBy=nome')
 function carregarCidades(estadoId) {
   cidadeSelect.innerHTML = '<option value="">Carregando...</option>';
 
-  fetch(`http://servicodados.ibge.gov.br/api/v1/localidades/estados/${estadoId}/municipios`)
+  fetch(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${estadoId}/municipios`)
     .then(res => res.json())
     .then(cidades => {
       cidadeSelect.innerHTML = '<option value="">Selecione uma cidade</option>';
@@ -78,7 +78,7 @@ async function dadosIdeb() {
   let codigoIbge = cidadeId != ''? estadoId: estadoId;
 
   for (let ano of categoria) {
-    const url = `http://api.qedu.org.br/v1/ideb?id=${codigoIbge}&ano=${ano}`;
+    const url = `https://api.qedu.org.br/v1/ideb?id=${codigoIbge}&ano=${ano}`;
 
     try {
       const response = await fetch(url, {
@@ -125,7 +125,7 @@ async function dadoAcessoInternet() {
   let codigoIbge = cidadeId !== '' ? cidadeId : estadoId;
 
   const urls = categoria.map(ano =>
-    `http://api.qedu.org.br/v1/censo/territorio?ano=${ano}&ibge_id=${codigoIbge}`
+    `https://api.qedu.org.br/v1/censo/territorio?ano=${ano}&ibge_id=${codigoIbge}`
   );
 
   try {
@@ -212,7 +212,7 @@ async function dadoInfraestrutura() {
   let soma_dependencias_sala_atendimento_especial = 0;
 
   
-    const url = `http://api.qedu.org.br/v1/censo/territorio?ano=${ano}&ibge_id=${codigoIbge}`;
+    const url = `https://api.qedu.org.br/v1/censo/territorio?ano=${ano}&ibge_id=${codigoIbge}`;
 
     try {
       const response = await fetch(url, {
@@ -301,7 +301,7 @@ async function buscarDadosEnem() {
 
     let cidadeId = cidadeSelect.value || 2111300;
     let anoSelecionado = document.getElementById('ano').value || 2019;
-    const apiUrl = 'http://api.qedu.org.br/v1/enem';
+    const apiUrl = 'https://api.qedu.org.br/v1/enem';
    
 
     const params = { id: cidadeId, ano: anoSelecionado };
@@ -606,14 +606,11 @@ async function carregarInfraestrutura() {
         }
       },
       scales: {
-          x: {
-        stacked: false,  // DESATIVAR empilhamento no eixo X
-        title: {
-          display: true
-        }
-      },
+         
         y: {
           beginAtZero: true,
+          suggestedMin: 30,
+          suggestedMax: 50,
         }
       }
     }
