@@ -387,9 +387,10 @@ async function renderChart() {
     const ctx = document.getElementById('enemChart').getContext('2d');
    const cidadeTitulo = cidadeSelect.value !== ''
     ? cidadeSelect.options[cidadeSelect.selectedIndex].text
-    : 'São Luís';
+    : `${cidadeSelect.options[cidadeSelect.selectedIndex].text}`; 
+
     
-    const estado = cidadeSelect.options[cidadeSelect.selectedIndex]?.dataset.estado || 'MA';
+    const estado = cidadeSelect.options[cidadeSelect.selectedIndex]?.dataset.estado || `${estadoSelect.options[estadoSelect.selectedIndex].text}`;
     const anoSelecionado = document.getElementById('ano').value || 2019;
 
     const dados = await buscarDadosEnem();
@@ -405,11 +406,12 @@ async function renderChart() {
             labels: dados.labels,
             datasets: [{
                 data: dados.values,
-                backgroundColor: ['#4caf50', '#2196f3', '#ffc107', '#ff5722', '#9c27b0']
+                backgroundColor: ['#5409DA', '#C5172E', '#ffc107', '#ff5722', '#9c27b0']
             }]
         },
         options: {
             responsive: true,
+            maintainAspectRatio: false,
             plugins: {
                 title: {
                     display: true,
@@ -459,11 +461,13 @@ async function graficoIdeb() {
     datasets: [{
       label: 'Nota IDEB',
       data: dadosIdebObtio,
-      backgroundColor: '#82ca9d'
+      backgroundColor: ['#0079FF', '#00DFA2', '#ffc107', '#ff5722', '#9c27b0']
+            
     }]
   },
   options: {
     responsive: true,
+    maintainAspectRatio: false,
     plugins: {
       title: {
         display: true,
@@ -510,18 +514,19 @@ async function graficoAcessoInternet(){
       {
         label: '% Acesso à Internet',
         data: dadosAcessoInternet.internet,
-        backgroundColor: 'rgba(54, 162, 235, 0.7)',
+        backgroundColor: 'rgb(0, 255, 209)',
       },
       {
         label: '% Acesso à Banda Larga',
         data: dadosAcessoInternet.bandaLarga,
-        backgroundColor: 'rgba(255, 99, 132, 0.7)',
+        backgroundColor: 'rgb(84, 9, 218)',
       }
       
     ]
   },
   options: {
     responsive: true,
+    maintainAspectRatio: false,
     plugins: {
       title: {
         display: true,
@@ -539,8 +544,7 @@ async function graficoAcessoInternet(){
       x: {
         stacked: false,  // DESATIVAR empilhamento no eixo X
         title: {
-          display: true,
-          text: 'Ano'
+          display: true
         }
       },
       y: {
@@ -582,10 +586,11 @@ async function carregarInfraestrutura() {
     },
     options: {
       responsive: true,
+      maintainAspectRatio: false,
       plugins: {
         title: {
           display: true,
-          text: `Distribuição de Infraestrutura nas Escolas no ano de ${document.getElementById('ano').value}| `+ (cidadeSelect.value? cidadeSelect.options[cidadeSelect.selectedIndex].text+ "-" + estadoSelect.options[estadoSelect.selectedIndex].text: estadoSelect.options[estadoSelect.selectedIndex].text),
+          text: `Distribuição de Infraestrutura nas Escolas no ano de ${document.getElementById('ano').value} | `+ (cidadeSelect.value? cidadeSelect.options[cidadeSelect.selectedIndex].text+ "-" + estadoSelect.options[estadoSelect.selectedIndex].text: estadoSelect.options[estadoSelect.selectedIndex].text),
         },
         tooltip: {
           callbacks: {
@@ -615,20 +620,7 @@ function carregarGraficos() {
   graficoIdeb()
   graficoAcessoInternet()
   carregarInfraestrutura()
-  renderChart();
+  renderChart()
 
 }
 
-
-
-// new Chart(document.getElementById('infraChart'), {
-//   type: 'bar',
-//   data: {
-//     labels: ['Escola A', 'Escola B', 'Escola C'],
-//     datasets: [{
-//       label: '% Qualidade',
-//       data: [70, 85, 65],
-//       backgroundColor: '#ffc658'
-//     }]
-//   }
-// });
